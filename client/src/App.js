@@ -1,22 +1,18 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
+import { SetTimer, Timer } from './components/index.js';
+
+const TimerContext = createContext('setTimer');
 
 function App() {
+
+  const timerStatus = useContext(TimerContext);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {`${timerStatus}`}
+      <TimerContext.Provider value={timerStatus}>
+        <Timer />
+      </TimerContext.Provider>
     </div>
   );
 }
